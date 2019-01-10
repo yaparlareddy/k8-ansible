@@ -1,0 +1,29 @@
+---
+
+- name: add docker apt repo
+  apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+- name: add docker repo
+  apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+      state: present
+
+- name: add k8 gpg key
+  apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      state: present
+
+- name: k8 apt repo
+  apt_repository:
+      repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+      state: present
+- name: install packages
+  apt:
+      name: "{{ packages }}"
+      state: present
+      update_cache: yes
+- name: config net bridge
+  command: echo "net.bridge.bridge-nf-call-iptables=1" | sudo tee -a /etc/sysctl.conf
+

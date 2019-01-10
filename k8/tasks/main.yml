@@ -1,0 +1,4 @@
+---
+# tasks file for k8
+- name: install k8 based on os
+  include: ubuntu.yml
