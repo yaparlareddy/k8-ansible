@@ -1,4 +1,7 @@
 ---
 # tasks file for k8
-- name: install k8 based on os
+- name: install k8 on ubuntu-18.04
   include: ubuntu.yml
+
+- name: install k8 for centos-7
+  include: centos.yml

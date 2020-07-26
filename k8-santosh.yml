@@ -1,0 +1,13 @@
+---
+
+- hosts: k8
+  become: yes
+  become_method: sudo
+  roles: 
+    - role: k8
+      vars:
+          packages:
+              - docker-ce
+              - kubelet
+              - kubeadm
+              - kubectl
